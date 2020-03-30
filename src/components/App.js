@@ -3,9 +3,9 @@ import SeachBar from './SearchBar';
 
 class App extends React.Component {
     render() {
-        console.log(this);
+        // console.log(this);
         return (
-            <div>
+            <div className="ui container">
                 <SeachBar />
             </div>
         )
