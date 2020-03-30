@@ -5,9 +5,15 @@ import SeachBar from './SearchBar';
 const KEY = 'AIzaSyAjz4M12fvRfplFfKfiXhXfo6SsUEy2Wgk';
 
 class App extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            videos: []
+        }
+    }
 
-    onTermSubmit = (term) => {
-        youtube.get('/search', {
+    onTermSubmit = async (term) => {
+        const response = await youtube.get('/search', {
             params: {
                 q: term,
                 part: 'snippet',
@@ -16,6 +22,7 @@ class App extends React.Component {
                 key: KEY
             }
         })
+        this.setState({ videos: response.data.items });
     }
 
     render() {
@@ -23,6 +30,7 @@ class App extends React.Component {
         return (
             <div className="ui container">
                 <SeachBar onFormSubmit={this.onTermSubmit} />
+                I have {this.state.videos.length} videos
             </div>
         )
     }

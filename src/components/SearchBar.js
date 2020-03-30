@@ -4,7 +4,7 @@ class SeachBar extends React.Component {
     constructor(props) {
         super(props);
         this.state ={
-            term: "Seach something dupe"
+            term: "Search something dupe"
         }
     }
 
