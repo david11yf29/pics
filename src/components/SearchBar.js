@@ -4,8 +4,13 @@ class SeachBar extends React.Component {
     render() {
         console.log(this);
         return (
-            <div>
-                Search Bar
+            <div className="search-bar ui segment">
+                <div className="ui form">
+                    <div className="field">
+                        <label>Video Search</label>
+                        <input type="text" />
+                    </div>
+                </div>
             </div>
         )
     }
