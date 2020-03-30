@@ -1,15 +1,15 @@
 import React from 'react';
 
 class SeachBar extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state ={
             term: "Seach something dupe"
         }
     }
 
     onInputChange = (event) => {
-        console.log(this);
+        // console.log(this);
         this.setState({ term: event.target.value })
     }
 
@@ -17,6 +17,7 @@ class SeachBar extends React.Component {
         event.preventDefault();
 
         // TODO: Make sure we call
+        this.props.onFormSubmit(this.state.term);
         // callback from parent
     }
 
