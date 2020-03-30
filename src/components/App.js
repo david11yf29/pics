@@ -9,7 +9,8 @@ class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            videos: []
+            videos: [],
+            selectedVideo: null
         }
     }
 
@@ -26,12 +27,17 @@ class App extends React.Component {
         this.setState({ videos: response.data.items });
     }
 
+    onVideoSelect = (video) => {
+        console.log('From the App!', video.snippet)
+        this.setState({ selectedVideo: video.snippet })
+    }
+
     render() {
         // console.log(this);
         return (
             <div className="ui container">
                 <SeachBar onFormSubmit={this.onTermSubmit} />
-                <VideoList videos={this.state.videos} />
+                <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos} />
             </div>
         )
     }
