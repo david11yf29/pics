@@ -9,10 +9,17 @@ class PostList extends React.Component {
     }
 
     render() {
+        console.log(this.props.postsFromMSTP);
         return <div>Post List</div>
     }
 }
 
-export default connect(null, {
+const mapStateToProps = (state) => {
+    return {
+        postsFromMSTP: state.postsReducerFromCR
+    }
+}
+
+export default connect(mapStateToProps, {
     fetchPostsFromC: fetchPosts
 })(PostList);
