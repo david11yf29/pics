@@ -23,3 +23,11 @@ const _fetchUser = _.memoize(async (id, dispatch) => {
         payload: response.data
     })
 })
+
+// const _fetchUser = _.memoize(async (id, dispatch) => {
+//     const response = await jsonPlaceholder.get(`/users/${id}`);
+//     dispatch({
+//         type: 'FETCH_USERS',
+//         payload: response.data
+//     })
+// })
