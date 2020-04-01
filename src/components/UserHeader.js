@@ -9,7 +9,7 @@ class UserHeader extends React.Component {
     }
 
     render() {
-
+        // console.log(this.props);
         const user = this.props.usersFromMSTP.find((user) => {
             return user.id === this.props.userId
         })
@@ -19,7 +19,7 @@ class UserHeader extends React.Component {
         }
 
         return (
-            <div>{user.name}</div>
+            <div className="header">{user.name}</div>
         )
     }
 }
