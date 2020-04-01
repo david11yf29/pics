@@ -9,12 +9,27 @@ class UserHeader extends React.Component {
     }
 
     render() {
+
+        const user = this.props.usersFromMSTP.find((user) => {
+            return user.id === this.props.userId
+        })
+
+        if (!user) {
+            return null
+        }
+
         return (
-            <div>User Header</div>
+            <div>{user.name}</div>
         )
     }
 }
 
-export default connect(null, {
+const mapStateToProps = (state) => {
+    return {
+        usersFromMSTP: state.usersReducerFromCR
+    }
+}
+
+export default connect(mapStateToProps, {
     fetchUserFromC: fetchUser
 })(UserHeader);
