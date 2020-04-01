@@ -10,23 +10,25 @@ class UserHeader extends React.Component {
 
     render() {
         // console.log(this.props);
-        const user = this.props.usersFromMSTP.find((user) => {
-            return user.id === this.props.userId
-        })
+        // const user = this.props.usersFromMSTP.find((user) => {
+        //     return user.id === this.props.userId
+        // })
 
-        if (!user) {
+        const { userFromMSTP } = this.props;
+
+        if (!userFromMSTP) {
             return null
         }
 
         return (
-            <div className="header">{user.name}</div>
+            <div className="header">{userFromMSTP.name}</div>
         )
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
-        usersFromMSTP: state.usersReducerFromCR
+        userFromMSTP: state.usersReducerFromCR.find(user => user.id === ownProps.userId)
     }
 }
 
