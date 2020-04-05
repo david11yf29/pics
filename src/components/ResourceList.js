@@ -10,9 +10,20 @@ class ResourceList extends React.Component {
     async componentDidMount() {
         const response = await axios.get(`https://jsonplaceholder.typicode.com/${this.props.resource}`);
 
-        console.log(response.data);
+        // console.log(response.data);
 
         this.setState({ resource: response.data });
+    }
+
+    async componentDidUpdate(prevProps) {
+        if (prevProps.resource !== this.props.resource) {
+            const response = await axios.get(`https://jsonplaceholder.typicode.com/${this.props.resource}`);
+
+            this.setState({ resource: response.data });
+        }
+        // console.log(this.props);
+
+       
     }
 
     render() {
